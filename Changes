@@ -1,5 +1,8 @@
 Revision history for String-Gsub
 
+0.02    Tue Jul  4 20:44:31 JST 2006
+        fix, typo in document.
+
 0.01    Tue Jul  4 00:09:42 JST 2006
         First version, released on an unsuspecting world.
 

@@ -136,24 +136,56 @@ String::Gsub::Functions - core functions of String::Gsub
 
  use String::Gsub::Functions qw(gsub);
  
- print gsub("abcabc", qr/b/,sub{uc$1}); # ==> "aBcaBc"
+ print gsub("abcabc", qr/(b)/,sub{uc$1}); # ==> "aBcaBc"
  
- gsubx(my $str = "abcabc", qr/b/, sub{uc $1});
+ gsubx(my $str = "abcabc", qr/(b)/, sub{uc $1});
  print $str; # ==> "aBcaBc";
+
+=head1 DESCRIPTION
+
+This module has folloing functions:
+
+ gsub ($str, $regexp, $replacement)
+ gsubx($str, $regexp, $replacement)
+ subs ($str, $regexp, $replacement)
+ subsx($str, $regexp, $replacement)
+
+C<$regexp> is regular expression (C<qr//>). 
+And C<$replacement> is code reference, which is invoked at replacement.
+In C<$replacement> subroutine, match variables (C<$1>, C<$2>, ...)
+are avaiable like replacement part of C<s/PATTERN/REPLACEMENT/>.
+
+Both C<$regexp> and C<$replacement> can be string, 
+but there are difference from usual part.
+
+String passed on C<$regexp> is not treated as regular expression
+, just string. special chars will be escaped.
+
+String passwd on C<$replacement> will be replaced some substrings
+with match strings and used as replacement string.
+C<\&>, C<\`> and C<\'> are also did.
 
 =head1 EXPORT
 
-This module can export C<gsub gsubx subs subsx>.
+This module can export C<gsub>, C<gsubx>, C<subs>, C<subsx>.
 
 =head1 FUNCTIONS
 
 =head2 gsub($str, $regexp, $replacement)
 
+process global substitute, and return new string.
+
 =head2 gsubx($str, $regexp, $replacement)
+
+like gsub, but replace self string and return itself.
 
 =head2 subs($str, $regexp, $replacement)
 
+process one substitute, and return new string.
+
 =head2 subsx($str, $regexp, $replacement)
+
+like subs, but replace self string and return itself.
 
 =head1 SEE ALSO
 

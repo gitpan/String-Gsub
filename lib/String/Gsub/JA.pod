@@ -10,17 +10,21 @@ String::Gsub::JA - 文字列オブジェクトに正規表現操作を.
 
 =head1 バージョン
 
-Version 0.01
+Version 0.02
 
 =head1 書式
 
  use String::Gsub qw(gstr);
+ 
+ print gstr("abcabc")->gsub(qr/b/,sub{uc$1}); # ==> "aBcaBc"
+ print gstr("hw")->gsub(qr/h/,"Hello")->gsub(qr/w/,"World"); # ==> "HelloWorld"
+
 
 =head1 関数
 
-=head2 gstr(LIST)
+=head2 gstr($str)
 
-String::Gsub->new($str) の省略形.
+C<< String::Gsub-E<gt>new($str) >> の省略形.
 
 =head1 メソッド
 
@@ -96,7 +100,8 @@ L<http://search.cpan.org/dist/String-Gsub>
 
 =head1 参考
 
-L<String::Gsub>, L<String::Gsub::Functions>
+L<String::Gsub>, L<String::Gsub::JA>,
+L<String::Gsub::Functions>, L<String::Gsub::Functions::JA>
 
 =head1 著作権及びライセンス
 

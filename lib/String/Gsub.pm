@@ -16,7 +16,7 @@ use base qw(Exporter);
 use overload q|""| => \&stringy;
 our @EXPORT_OK = qw(gstr);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 1;
@@ -115,13 +115,14 @@ String::Gsub - regex on string object
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
  use String::Gsub qw(gstr);
  
- print gstr('abcabc')->gsub(qr/b/,sub{uc$1}); # ==> 'aBcaBc'
+ print gstr("abcabc")->gsub(qr/b/,sub{uc$1}); # ==> "aBcaBc"
+ print gstr("hw")->gsub(qr/h/,"Hello")->gsub(qr/w/,"World"); # ==> "HelloWorld"
 
 =head1 EXPORT
 
@@ -141,7 +142,7 @@ Create new instance.
 
 =head2 $this->gsub($regexp, $replacement)
 
-process global substitute, and return new one.
+process global substitute, and return new object.
 
 =head2 $this->gsubx($regexp, $replacement)
 
@@ -149,7 +150,7 @@ like gsub, but replace self object and return itself.
 
 =head2 $this->sub($regexp, $replacement)
 
-process one substitute, and return new one.
+process one substitute, and return new object.
 
 =head2 $this->subx($regexp, $replacement)
 
