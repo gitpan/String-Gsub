@@ -1,5 +1,8 @@
 Revision history for String-Gsub
 
+0.03    Wed Jul  5 09:13:18 JST 2006
+        fix, ja-doc for Functions is missed.
+
 0.02    Tue Jul  4 20:44:31 JST 2006
         fix, typo in document.
 

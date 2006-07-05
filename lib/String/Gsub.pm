@@ -16,7 +16,7 @@ use base qw(Exporter);
 use overload q|""| => \&stringy;
 our @EXPORT_OK = qw(gstr);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 1;
@@ -115,7 +115,7 @@ String::Gsub - regex on string object
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =head1 SYNOPSIS
 
