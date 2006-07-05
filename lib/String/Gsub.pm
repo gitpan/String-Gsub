@@ -16,7 +16,7 @@ use base qw(Exporter);
 use overload q|""| => \&stringy;
 our @EXPORT_OK = qw(gstr);
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 1;
@@ -46,7 +46,7 @@ sub new
 #
 sub gsubx
 {
-  my $this = shift;
+	my $this = shift;
 	my $re = shift;
 	my $sub = shift;
 	
@@ -61,7 +61,7 @@ sub gsubx
 #
 sub gsub
 {
-  my $this = shift;
+	my $this = shift;
 	my $re = shift;
 	my $sub = shift;
 	
@@ -75,7 +75,7 @@ sub gsub
 #
 sub subx
 {
-  my $this = shift;
+	my $this = shift;
 	my $re = shift;
 	my $sub = shift;
 	
@@ -90,7 +90,7 @@ sub subx
 #
 sub sub
 {
-  my $this = shift;
+	my $this = shift;
 	my $re = shift;
 	my $sub = shift;
 	
@@ -103,7 +103,7 @@ sub sub
 #
 sub stringy
 {
-  my $this = shift;
+	my $this = shift;
 	$this->{s};
 }
 
@@ -115,7 +115,7 @@ String::Gsub - regex on string object
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 SYNOPSIS
 
@@ -127,6 +127,7 @@ Version 0.03
 =head1 EXPORT
 
 This module can export C<gstr>.
+No functions are exported by default.
 
 =head1 FUNCTIONS
 

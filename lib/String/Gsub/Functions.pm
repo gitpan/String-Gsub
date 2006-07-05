@@ -10,6 +10,7 @@
 package String::Gsub::Functions;
 use warnings;
 use strict;
+use String::Gsub::Matcher;
 
 use base qw(Exporter);
 our @EXPORT_OK = qw(gsub gsubx subs subsx);
@@ -24,25 +25,8 @@ our @EXPORT_OK = qw(gsub gsubx subs subsx);
 #
 sub gsub($$$)
 {
-  my $str = shift;
-	my $re = shift;
-	my $sub = shift;
-	
-	ref($re) or $re = qr/\Q$re\E/;
-	ref($sub) or $sub = do{ my$tmpl=$sub; sub{ _expand($str, $tmpl); }; };
-	my $pos = 0;
-	my $count = 0;
-	my $new = '';
-	while($str =~ /$re/g )
-	{
-		$new .= substr($str, $pos, $-[0]-$pos);
-		my $match = substr($str,$-[0], $+[0]-$-[0]);
-		$new .= $sub->($match);
-		$pos = $+[0];
-		++$count;
-	}
-	$new .= substr($str, $pos);
-	$new;
+	splice(@_, 0, 1, $_[0]); # copy.
+	&gsubx;
 }
 
 # -----------------------------------------------------------------------------
@@ -52,7 +36,18 @@ sub gsub($$$)
 #   returns new value and $str is replaced with result too.
 sub gsubx($$$)
 {
-	$_[0] = &gsub(@_);
+	#my $str = $_[0];
+	my $re  = $_[1];
+	my $sub = $_[2];
+	
+	ref($re)  or $re  = qr/\Q$re\E/;
+	ref($sub) or $sub = do{ my$tmpl=$sub; sub{ shift->expand($tmpl); }; };
+	$_[0] =~ s{$re}
+	{
+		my $match = String::Gsub::Matcher->new($_[0]);
+		$sub->($match);
+	}ge;
+	$_[0];
 }
 
 # -----------------------------------------------------------------------------
@@ -63,25 +58,8 @@ sub gsubx($$$)
 #
 sub subs($$$)
 {
-  my $str = shift;
-	my $re = shift;
-	my $sub = shift;
-	
-	ref($re) or $re = qr/\Q$re\E/;
-	ref($sub) or $sub = do{ my$tmpl=$sub; sub{ _expand($str, $tmpl); }; };
-	my $pos = 0;
-	my $count = 0;
-	my $new = '';
-	if($str =~ /$re/g )
-	{
-		$new .= substr($str, $pos, $-[0]-$pos);
-		my $match = substr($str,$-[0], $+[0]-$-[0]);
-		$new .= $sub->($match);
-		$pos = $+[0];
-		++$count;
-	}
-	$new .= substr($str, $pos);
-	$new;
+	splice(@_, 0, 1, $_[0]); # copy.
+	&subsx;
 }
 
 # -----------------------------------------------------------------------------
@@ -91,39 +69,18 @@ sub subs($$$)
 #   returns new value and $str is replaced with result too.
 sub subsx($$$)
 {
-	$_[0] = &subs(@_);
-}
-
-# -----------------------------------------------------------------------------
-# $str = _expand($origstr, $tmpl);
-#   evaluate string-template by match results.
-#
-sub _expand
-{
-	my $str = shift;
-	my $tmpl = shift;
-	my @st=@-;
-	my @ed=@+;
-	$tmpl =~ s{\\(\d+)|\\([&`'])}
+	#my $str = $_[0];
+	my $re  = $_[1];
+	my $sub = $_[2];
+	
+	ref($re)  or $re  = qr/\Q$re\E/;
+	ref($sub) or $sub = do{ my$tmpl=$sub; sub{ shift->expand($tmpl); }; };
+	$_[0] =~ s{$re}
 	{
-		if( defined($1) )
-		{
-			$1<=$#st ? substr($str, $st[$1], $ed[$1] - $st[$1]) : '';
-		}elsif( $2 eq '&' )
-		{
-			substr($str, $st[0], $ed[0] - $st[0]);
-		}elsif( $2 eq '`' )
-		{
-			substr($str, 0, $st[0]);
-		}elsif( $2 eq "\'" )
-		{
-			substr($str, $ed[0]);
-		}else
-		{
-			'';
-		}
-	}xmse;
-	$tmpl;
+		my $match = String::Gsub::Matcher->new($_[0]);
+		$sub->($match);
+	}e;
+	$_[0];
 }
 
 __END__

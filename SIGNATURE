@@ -14,15 +14,17 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 e0fbe1fefdc5f0efc26bd0c08af852d2a697e4c6 Changes
-SHA1 b376ee680a5902922ba9815b17d16557aebcaa60 MANIFEST
-SHA1 34cd6956aa5a8d657be4c97452a11eb577acc293 META.yml
+SHA1 1e6170541757d0ccbfd30d41a0407302d54adba2 Changes
+SHA1 1db23f612fda688152cf89b0ea831097ba3dcf60 MANIFEST
+SHA1 415f7c8c98fb77be89538dff186073d2b0fd01be META.yml
 SHA1 785d75aa3daadecabd35a5b2bf629fdfffacf636 Makefile.PL
 SHA1 039ae78b430d927db3ab677882220bcb2ea4a632 README
-SHA1 cbffe45c6f842c443462c5085a3ddc537e384167 lib/String/Gsub.pm
-SHA1 999b4859031a8b0424776279625cef177e79d0a7 lib/String/Gsub/Functions.pm
+SHA1 25b04b79fc7d710297c7ff3739b15f3aaefbb984 lib/String/Gsub.pm
+SHA1 74ca65843190d0f8e54d0a2e69d36204ce7801da lib/String/Gsub/Functions.pm
 SHA1 d0a2dbcd208eee66637a4b030fb6e30e08cf237d lib/String/Gsub/Functions/JA.pod
-SHA1 e396ab198800f15a875cf4d25fc55733794fb03a lib/String/Gsub/JA.pod
+SHA1 10cde9341e39339325d47d5857125a09c22aea02 lib/String/Gsub/JA.pod
+SHA1 f4c6a6da790d0817916b0d97a72763c815f39cb8 lib/String/Gsub/Matcher.pm
+SHA1 bd29c00e112ae2bfd02360cf96653a3d4ab70808 lib/String/Gsub/Matcher/JA.pod
 SHA1 32d9bdbd5304201f43e1042aad4d4a3b1ce83bee t/00-load.t
 SHA1 cea928bc188bd4192b39db74fda412b68fb3d0be t/boilerplate.t
 SHA1 986e0ce4c0748b41ad39be971103ffc10d2fb310 t/gsub-functions.t
@@ -33,7 +35,7 @@ SHA1 e07cd8cca59d1c4c3be8cfce22c7181d0c9c831e t/string-pattern.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.2 (GNU/Linux)
 
-iD8DBQFEqwRuewjCT38k4dkRAtT5AJsGl28VALXuePE88gFpuVjgUi2uugCeN6aP
-k6O4dclfE+ZUkjDOk7wEPvk=
-=UV6Y
+iD8DBQFErE0newjCT38k4dkRAqpQAJ0eNJMWwtiiXyK0rnkpGTlNLKbVBgCfXq4b
+RjrlXq9BwCtWw9H4rzwHTVo=
+=TEpo
 -----END PGP SIGNATURE-----

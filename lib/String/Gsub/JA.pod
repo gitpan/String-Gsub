@@ -10,7 +10,7 @@ String::Gsub::JA - 文字列オブジェクトに正規表現操作を.
 
 =head1 バージョン
 
-Version 0.03
+Version 0.04
 
 =head1 書式
 
@@ -19,6 +19,10 @@ Version 0.03
  print gstr("abcabc")->gsub(qr/b/,sub{uc$1}); # ==> "aBcaBc"
  print gstr("hw")->gsub(qr/h/,"Hello")->gsub(qr/w/,"World"); # ==> "HelloWorld"
 
+=head1 エクスポート
+
+このモジュールからは C<gstr> 関数をエクスポート可能です. 
+デフォルトでは何もエクスポートされません. 
 
 =head1 関数
 
